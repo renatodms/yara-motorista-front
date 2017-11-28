@@ -17,23 +17,7 @@
           if(nome == '' || email == '' || senha == ''){
             alert('Existem campos em branco.');
           } else{
-            $.ajax({
-              type: "POST",
-              url: 'http://localhost:8881/',
-              data: JSON.stringify({
-                nome: nome,
-                email: email,
-                senha: senha
-            }),
-              contentType:"application/json",
-              dataType:"json",
-              success: function(data){
-                alert('Sucesso.');
-              },
-              error: function(req, status, err){
-                alert('Erro interno do sistema.\n('+req.responseJSON+')');
-              }
-            });
+            window.location = url+nome+'/'+email+'/'+senha;            
           }
     }
   </script>
@@ -49,7 +33,7 @@
       <input name="email" type="text"/>
       senha
       <input name="senha" type="password"/><br><br>
-      <input type="submit" value="enviar" onclick="cadastrar();"/>
+      <input type="button" value="enviar" onclick="cadastrar();"/>
     </form>
 
 </body>
