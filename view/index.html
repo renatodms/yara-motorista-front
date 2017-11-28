@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+
+  <title>Cadastrar Motorista</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    function cadastrar(){
+      var url = new URL(window.location.href);
+      var form = document.getElementById('myForm'),
+          nome = form.elements.namedItem('nome').value,
+          email = form.elements.namedItem('email').value,
+          senha = form.elements.namedItem('senha').value;
+          
+          if(nome == '' || email == '' || senha == ''){
+            alert('Existem campos em branco.');
+          } else{
+            $.ajax({
+              type: "POST",
+              url: 'http://localhost:8881/',
+              data: JSON.stringify({
+                nome: nome,
+                email: email,
+                senha: senha
+            }),
+              contentType:"application/json",
+              dataType:"json",
+              success: function(data){
+                alert('Sucesso.');
+              },
+              error: function(req, status, err){
+                alert('Erro interno do sistema.\n('+req.responseJSON+')');
+              }
+            });
+          }
+    }
+  </script>
+</head>
+
+<body>
+
+    <h1>Cadastrar Motorista</h1>
+    <form action="#" id="myForm">
+      nome
+      <input name="nome" type="text"/>
+      email
+      <input name="email" type="text"/>
+      senha
+      <input name="senha" type="password"/><br><br>
+      <input type="submit" value="enviar" onclick="cadastrar();"/>
+    </form>
+
+</body>
+</html>
