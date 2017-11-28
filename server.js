@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/view'));
 //gambs
 app.get('/:nome/:email/:senha', (req, res) => {
     request.post({
-        uri: 'http://localhost:8881/',
+        uri: 'http://back:8881/',
         method: 'post',
         json: {
             nome: req.params.nome,
