@@ -5,7 +5,7 @@
   <meta charset="utf-8">
 
   <title>Cadastrar Motorista</title>
-  <script src="jquery.min.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
   <script>
     function cadastrar(){
       var url = new URL(window.location.href);
@@ -19,8 +19,11 @@
           } else{
             window.location = url+nome+'/'+email+'/'+senha;            
           }
+
+      return false;
     }
   </script>
+
   <link rel="stylesheet" href="bootstrap.min.css">
   <script src="bootstrap.min.js"></script>
 
@@ -43,7 +46,7 @@
     </header>
 
     <div class="container">        
-      <form class="form-signin" onsubmit="cadastrar();">
+      <form class="form-signin" id="myForm">
         <h2 class="form-signin-heading">Novo Motorista</h2>
         <label for="inputNome" class="sr-only">Nome</label>
         <input name="nome" type="text" id="inputNome" class="form-control" placeholder="Nome" required autofocus>
@@ -51,7 +54,7 @@
         <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email" required>
         <label for="inputSenha" class="sr-only">Senha</label>
         <input name="senha" type="password" id="inputSenha" class="form-control" placeholder="Senha" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar</button>
+        <button class="btn btn-lg btn-primary btn-block" type="button" onclick="cadastrar();">Cadastrar</button>
       </form>        
     </div> <!-- /container -->
 
